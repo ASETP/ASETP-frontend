@@ -14,17 +14,25 @@
           type="textarea"
           :rows="2"
           placeholder="Enter question..." />
-      <el-button
-          @click="sendMessage"
-          size="mini"
-      >
-        发送
-      </el-button>
+      <div>
+        <el-button
+            @click="sendMessage"
+            size="mini">
+          发送
+        </el-button>
+        <el-button
+            @click="test"
+            size="mini">
+          测试
+        </el-button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import request from "@/utils/request";
+
 export default {
   data() {
     return {
@@ -37,12 +45,26 @@ export default {
   methods: {
     sendMessage() {
       if (this.inputText.trim()) {
-        console.log(Date.now());
         this.messages.push({ id: Date.now(), text: this.inputText, isMe: true });
-        this.messages.push({ id: Date.now(), text: '回复', isMe: false });
+
+        request.get("/query/"+this.inputText).then(res=>{
+          console.log(res);
+          this.messages.push({ id: Date.now(), text: res.answer, isMe: false });
+        })
         this.inputText = '';
       }
     },
+    test(){
+      if (this.inputText.trim()) {
+        this.messages.push({ id: Date.now(), text: this.inputText, isMe: true });
+
+        request.get("/").then(res=>{
+          console.log(res);
+          this.messages.push({ id: Date.now(), text: res.message, isMe: false });
+        })
+        this.inputText = '';
+      }
+    }
   },
 };
 </script>
