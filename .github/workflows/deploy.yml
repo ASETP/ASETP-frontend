@@ -47,7 +47,10 @@ jobs:
             username: ${{ secrets.SERVER_USER }}
             password: ${{ secrets.SERVER_PASSWORD }}
             script: |
-              cd /opt/asetp/frontend
+              cd /opt/asetp/frontend/dist
+              ls
+              rm -rf dist
+              cd ..
               docker build -t asetp_frontend .
               docker stop asetp_frontend_container || true
               docker rm asetp_frontend_container || true
