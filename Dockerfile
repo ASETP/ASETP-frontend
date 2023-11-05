@@ -15,4 +15,4 @@ RUN npm install
 COPY ./src /frontCode/src
 RUN npm run build
 
-CMD[ "node", "/frontCode/dist/js/app.ae2810e9.js.map" ]
+CMD[ "node", "/src/main.js" ]
