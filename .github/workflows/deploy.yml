@@ -47,12 +47,9 @@ jobs:
             username: ${{ secrets.SERVER_USER }}
             password: ${{ secrets.SERVER_PASSWORD }}
             script: |
-              cd /opt/asetp/frontend/dist
-              ls
-              rm -rf dist
-              cd ..
+              cd /opt/asetp/frontend
               docker build -t asetp_frontend .
               docker stop asetp_frontend_container || true
               docker rm asetp_frontend_container || true
-              docker run -d --name asetp_frontend_container -p 8001:80 asetp_frontend
+              docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
