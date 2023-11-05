@@ -4,4 +4,4 @@ FROM nginx as build-stage
 # 设置工作目录
 WORKDIR /frontCode
 
-COPY dist/ /frontCode/dist/
+COPY ./dist /frontCode/dist
