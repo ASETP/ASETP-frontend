@@ -14,3 +14,5 @@ RUN npm install
 # 复制整个项目源代码并构建静态文件
 COPY ./src /frontCode/src
 RUN npm run build
+
+CMD["node", "/frontCode/dist/index.html"]
