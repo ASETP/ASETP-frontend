@@ -29,7 +29,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "./dist"
-          target: "/opt/asetp/frontend/dist"
+          target: "/opt/asetp/frontend"
 
       - name: Build and Run Docker on server
         uses: appleboy/ssh-action@master
