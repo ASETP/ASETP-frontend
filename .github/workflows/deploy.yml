@@ -38,7 +38,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "./dist"
-          target: "/opt/asetp/frontend/dist"
+          target: "/opt/asetp/frontend"
 
       - name: Build and Run Docker on server
         uses: appleboy/ssh-action@master
@@ -51,5 +51,5 @@ jobs:
               docker build -t asetp_frontend .
               docker stop asetp_frontend_container || true
               docker rm asetp_frontend_container || true
-              docker run -d --name asetp_frontend_container -p 8001:80 asetp_frontend
+              docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f

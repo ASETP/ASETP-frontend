@@ -1,9 +1,6 @@
 # 使用 Node.js 的 LTS 版本作为基础镜像
-FROM nginx as build-stage
+FROM nginx
 
-# 设置工作目录
-WORKDIR /frontCode
-
-COPY ./dist /frontCode/dist
+COPY ./dist/ /opt/asetp/frontCode/dist
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
