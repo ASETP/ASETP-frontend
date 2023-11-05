@@ -5,3 +5,5 @@ FROM nginx as build-stage
 WORKDIR /frontCode
 
 COPY ./dist /frontCode/dist
+
+COPY ./default.conf /etc/nginx/conf.d/default.conf
