@@ -47,16 +47,12 @@ jobs:
             username: ${{ secrets.SERVER_USER }}
             password: ${{ secrets.SERVER_PASSWORD }}
             script: |
-              ls /etc/nginx/conf.d/default.conf
               cd /opt/asetp/frontend
+              mkdir test
               docker build -t asetp_frontend .
               docker stop asetp_frontend_container || true
               docker rm asetp_frontend_container || true
               docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
-              docker exec -it asetp_frontend_container /bin/bash
-              cd /opt/asetp/frontCode
-              ls
-              cat index.html
-              cat /etc/nginx/conf.d/default.conf
-              exit
+              docker cp asetp_frontend_container:/opt ./test
+              ls test
