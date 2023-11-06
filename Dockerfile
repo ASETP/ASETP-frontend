@@ -4,3 +4,4 @@ FROM nginx
 COPY ./dist /opt/asetp/frontCode
 
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/nginx.conf
