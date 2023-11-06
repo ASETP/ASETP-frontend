@@ -22,7 +22,7 @@ jobs:
           source: "./Dockerfile"
           target: "/opt/asetp/frontend"
 
-      - name: Copy docker file to server
+      - name: Copy dist file to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
