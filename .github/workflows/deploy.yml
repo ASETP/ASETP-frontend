@@ -37,7 +37,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          source: "./dist"
+          source: "./nginx_default.conf"
           target: "/opt/asetp/frontend"
 
       - name: Build and Run Docker on server
@@ -54,8 +54,6 @@ jobs:
               docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
               docker cp asetp_frontend_container:/etc ./test
-              docker cp asetp_frontend_container:/opt/asetp/frontCode/index.html ./test
               cat test/etc/nginx/nginx.conf
               cat test/etc/nginx/conf.d/default.conf
-              cat test/index.html
               
