@@ -54,3 +54,4 @@ jobs:
               docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
               docker ps -a
+              docker exec -it
