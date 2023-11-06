@@ -56,5 +56,6 @@ jobs:
               docker cp asetp_frontend_container:/etc ./test
               docker cp asetp_frontend_container:/opt/asetp/frontCode/index.html ./test
               cat test/etc/nginx/nginx.conf
+              cat test/etc/nginx/conf.d/default.conf
               cat test/index.html
               
