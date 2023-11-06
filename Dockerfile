@@ -1,4 +1,3 @@
-# 使用 Node.js 的 LTS 版本作为基础镜像
 FROM nginx
 
 COPY ./dist /opt/asetp/frontCode
@@ -8,4 +7,4 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 FROM node
 
-CMD ["node", "app.ae2810e9.js"]
+CMD ["node", "/opt/asetp/frontCode/js/app.ae2810e9.js"]
