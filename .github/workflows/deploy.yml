@@ -48,8 +48,13 @@ jobs:
             password: ${{ secrets.SERVER_PASSWORD }}
             script: |
               cd /opt/asetp/frontend
+              ls
+              rm -rf ./test
+              mkdir test
               docker build -t asetp_frontend .
               docker stop asetp_frontend_container || true
               docker rm asetp_frontend_container || true
               docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
+              docker cp asetp_frontend_container:/opt/asetp/frontCode ./test
+              ls ./test
