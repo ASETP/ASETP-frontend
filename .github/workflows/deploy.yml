@@ -54,7 +54,7 @@ jobs:
               docker run -d --name asetp_frontend_container -p 8001:8000 asetp_frontend
               docker image prune -f
               docker cp asetp_frontend_container:/etc ./test
-              docker cp asetp_frontend_container:/opt/asetp/frontCode ./test
+              docker cp asetp_frontend_container:/opt/asetp/frontCode/index.html ./test
               cat test/etc/nginx/nginx.conf
-              ls test/frontCode
+              cat test/index.html
               
