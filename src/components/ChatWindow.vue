@@ -1,41 +1,47 @@
 <template>
   <el-container class="el-container"
-                style="min-height: 100%;min-width: 100%; border: 1px solid #eee">
+                style="min-height: 100%;min-width: 100%">
     <div class="chat-window">
       <!-- 显示消息的容器 -->
       <el-container class="message-container" style="height: 540px">
         <el-header
-            style="margin-top: 50px;line-height:1.7;font: 20px Extra large"
-            class="el-icon-question">
-          Stack Overflow 问答
+            style="height:20px;margin-top: 50px;line-height:1.7;font: 20px Extra large">
+           Stack Overflow 问答
         </el-header>
+
         <ul class="infinite-list" v-infinite-scroll="load"
-            style="height:400px;width:460px;overflow:auto">
+            style="height:470px;width:460px;overflow:auto">
           <li v-for="message in messages" :key="message.id" class="message">
-            <div v-if="message.isMe" class="message-text mine">{{ message.text }}</div>
-            <div v-else class="message-text">{{ message.text }}</div>
+            <div v-if="message.isMe" class="message-text mine">
+              <p style="word-wrap:break-word;font-size: small;">{{ message.text }}</p>
+            </div>
+            <div v-else class="message-text">
+              <p style="word-wrap:break-word;font-size: small;">{{ message.text }}</p>
+            </div>
           </li>
         </ul>
       </el-container>
 
       <!-- 输入消息 -->
-      <form class="input-form" style="width: 500px;margin-left:10px;margin-bottom: 30px">
+      <form class="input-form" style="width: 500px;margin-left:10px;margin-bottom: 15px">
         <el-input
             v-model="inputText"
             type="textarea"
-            :rows="2"
+            :rows="3"
             placeholder="Enter question..." />
-        <div style="margin-top: 5px">
+        <div style="margin-top: 10px">
           <el-button
               @click="sendMessage"
               v-loading.fullscreen.lock="loading"
-              size="mini">
+              size="mini"
+              type="primary">
             发送
           </el-button>
           <el-button
               @click="test"
               v-loading.fullscreen.lock="loading"
-              size="mini">
+              size="mini"
+              type="success">
             测试
           </el-button>
         </div>
@@ -53,7 +59,7 @@ export default {
       inputText: '',
       messages: [],
       count:0,
-      loading: false
+      loading: false,
     };
   },
   methods: {
@@ -97,7 +103,7 @@ export default {
 }
 
 .message-container {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .message {
@@ -108,6 +114,7 @@ export default {
 .message-text {
   padding: 5px;
   border-radius: 3px;
+  width: 430px;
 }
 
 .mine {
