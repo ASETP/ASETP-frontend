@@ -74,9 +74,9 @@ export default {
         request.get("/query/"+this.inputText).then(res=>{
           console.log(res);
           this.messages.push({ id: Date.now(), text: res.answer, isMe: false });
+          this.loading = false;
+          this.inputText = '';
         })
-        this.inputText = '';
-        this.loading = false;
       }
     },
     test(){
@@ -89,7 +89,9 @@ export default {
           this.messages.push({ id: Date.now(), text: res.message, isMe: false });
         })
         this.inputText = '';
-        this.loading = false;
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000);
       }
     }
   },
