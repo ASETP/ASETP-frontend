@@ -44,6 +44,13 @@
               type="success">
             测试
           </el-button>
+          <el-button
+              plain
+              @click="openShow"
+              size="mini"
+              type="info">
+            可视化
+          </el-button>
         </div>
       </form>
     </div>
@@ -87,12 +94,14 @@ export default {
         request.get("/").then(res=>{
           console.log(res);
           this.messages.push({ id: Date.now(), text: res.message, isMe: false });
-        })
-        this.inputText = '';
-        setTimeout(() => {
           this.loading = false;
-        }, 1000);
+          this.inputText = '';
+        })
       }
+    },
+    openShow(){
+      window.location.href = 'https://workspace-preview.neo4j.io'
+      window.open('https://workspace-preview.neo4j.io/workspace/query',"_blank")
     }
   },
 };
