@@ -28,18 +28,17 @@
             v-model="inputText"
             type="textarea"
             :rows="3"
-            placeholder="Enter question..." />
+            placeholder="Enter question..."
+            v-loading="loading"/>
         <div style="margin-top: 10px">
           <el-button
               @click="sendMessage"
-              v-loading.fullscreen.lock="loading"
               size="mini"
               type="primary">
             发送
           </el-button>
           <el-button
               @click="test"
-              v-loading.fullscreen.lock="loading"
               size="mini"
               type="success">
             测试
