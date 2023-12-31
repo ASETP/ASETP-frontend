@@ -22,16 +22,15 @@ jobs:
           script: |
             cd /opt/asetp/frontend
             rm -rf ./dist
-            ls
-#
-#      - name: Copy docker file to server
-#        uses: appleboy/scp-action@master
-#        with:
-#          host: ${{ secrets.SERVER_IP }}
-#          username: ${{ secrets.SERVER_USER }}
-#          password: ${{ secrets.SERVER_PASSWORD }}
-#          source: "./Dockerfile"
-#          target: "/opt/asetp/frontend"
+
+      - name: Copy docker file to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          source: "./Dockerfile"
+          target: "/opt/asetp/frontend"
 
       - name: Copy dist file to server
         uses: appleboy/scp-action@master
