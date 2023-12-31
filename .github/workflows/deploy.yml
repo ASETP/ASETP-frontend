@@ -64,7 +64,3 @@ jobs:
               docker rm asetp_frontend_container || true
               docker run -d --name asetp_frontend_container -p 8001:8002 asetp_frontend
               docker image prune -f
-              docker cp asetp_frontend_container:/opt/asetp/frontCode ./test
-              cat ./test/frontCode/index.html
-              cat ./test/frontCode/js/app.ae2810e9.js
-              cat ./test/frontCode/js/chunk-vendors.ae0035d7.js
