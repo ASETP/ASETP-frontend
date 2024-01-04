@@ -37,12 +37,12 @@
               type="primary">
             发送
           </el-button>
-          <el-button
-              @click="test"
-              size="mini"
-              type="success">
-            测试
-          </el-button>
+<!--          <el-button-->
+<!--              @click="test"-->
+<!--              size="mini"-->
+<!--              type="success">-->
+<!--            测试-->
+<!--          </el-button>-->
           <el-button
               plain
               @click="openShow"
